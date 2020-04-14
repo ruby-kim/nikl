@@ -117,8 +117,8 @@ dmypy.json
 
 
 # ====================================
-
-
+# data folder (empty)
+!data/.gitkeep
 
 # Etc
 .idea/
