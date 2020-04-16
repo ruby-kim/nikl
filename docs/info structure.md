@@ -8,8 +8,8 @@
         ├── author
         ├── sponsor
         ├── respStmt
-        ├── resp
-        ├── tname
+            ├── resp
+            ├── tname
     ├── extent
     ├── publicationStmt
         ├── distributor
