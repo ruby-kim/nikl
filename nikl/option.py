@@ -17,15 +17,14 @@ def setting_parse():
     """
     parser = argparse.ArgumentParser(description='옵션을 선택해주세요.', formatter_class=RawTextHelpFormatter)
     parser.add_argument('--filename', required=True, help='전처리 할 txt 파일명을 입력해주세요: text1.txt \n\n')
-    parser.add_argument('--info', required=False, action='store_false', help='해당 txt 파일의 정보를 추출할건지 알려주세요: [True / False]\n'
-                                                                             '기본값은 False 입니다.\n\n')
+    parser.add_argument('--info', required=False, action='store_true', help='해당 txt 파일의 정보를 추출할건지 알려주세요: [True / False]\n'
+                                                                            '기본값은 False 입니다.\n\n')
     parser.add_argument('--content', required=False, action='store_true', help='해당 txt 파일의 내용을 추출할건지 알려주세요: [True / False]\n'
                                                                                '기본값은 True 입니다.\n\n')
-    parser.add_argument('--newline', required=False, action='store_false',
+    parser.add_argument('--newline', required=False, action='store_true',
                         help='전처리 결과값에 단락 별 개행문자 적용 여부를 알려주세요: [True / False]\n'
                              '기본값은 True 입니다.\n\n')
 
     args = parser.parse_args()
-    filename, info, content, newline = args.filename, args.newline, args.info, args.content
-    print(filename, newline, info, content)
-    return filename, newline, info, content
+    filename, info, content, newline = args.filename, args.info, args.content, args.newline
+    return filename, info, content, newline
