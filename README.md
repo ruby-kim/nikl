@@ -2,7 +2,7 @@
 국립국어원(**N**ational **I**nstitute of **K**orean **L**anguage) 언어정보나눔터: 말뭉치 파일 전처리 코드
 <br>
 
-### Installation
+## Installation
 * Pypi: 배포 여부 확인 후 가능하다면 pypi에 올려서 패키지화 예정
   ```bash
   pip install nikl
