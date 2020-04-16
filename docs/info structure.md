@@ -3,7 +3,7 @@
 ```
 .
 ├── fileDesc
-    ├── titleStmt: 
+    ├── titleStmt
         ├── title
         ├── author
         ├── sponsor
