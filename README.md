@@ -33,7 +33,7 @@ python main.py --filename [파일명.txt] --info --content --newline
 #      test.txt에서 단락 내용만 개행문자를 포함해서 data/test_content.txt 파일 생성
 # ex2) python main.py --filename test2.txt test3.txt --info --content
 #      text2.txt와 text3.txt에서 파일의 정보와 단락 내용을 각각 저장 후 data/test2_info.txt, test2_content.txt 
-#                                                                   data/test3_info.txt, test3_content.txt 파일 생성
+#                                                                    data/test3_info.txt, test3_content.txt 파일 생성
 ```
 * filename: 1개 이상의 파일명.txt 형식으로 입력해주세요. 국립국어원 말뭉치 파일 특성 상 txt파일만 지원하고 있습니다.
 * info: 해당 파일의 [전반적인 정보](https://github.com/study-artificial-intelligence/nikl/blob/master/docs/info%20structure.md)를 출력할지에 대한 여부를 나타냅니다. 기본값은 False 입니다.
