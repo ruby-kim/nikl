@@ -4,6 +4,7 @@ Implement pre-processing and save files: <teiHeader></teiHeader> part
 from bs4 import BeautifulSoup
 import os
 
+
 def save_info(name, infos):
     """ ===============
         Save .text info
@@ -210,6 +211,7 @@ def get_info(filename, text, infos):
     encodingDesc = make_encodingDesc(text)
     profileDesc = make_profileDesc(text)
     revList = list()
+
     for i in range(1, len(revisionText)):
         tmp = make_revisionDesc(str(revisionText[i]), i)
         revList += tmp
