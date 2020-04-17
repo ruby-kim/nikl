@@ -13,7 +13,6 @@ def save_info(name, infos):
             :param: name(str): filename(test.txt)
             :param: infos(list): <teiHeader></heiHeader> contents
     """
-    name = name.replace(".txt", "")
     dir = os.getcwd() + "\\data"
 
     file = open(dir + "\\" + name + "_info.txt", 'w', encoding="utf-8")
@@ -192,17 +191,14 @@ def make_revisionDesc(text, i):
     return result
 
 
-def get_info(filename, text, infos):
+def get_info(filename, text):
     """ =======================
         Parsing the information
         =======================
         Args:
+            :param: filename(str): filename
             :param: text(str): raw_file
-            :param: info(boolean, default: false)
     """
-    if not infos:
-        return
-
     # get specific values & write
     soup = BeautifulSoup(text, 'html.parser')
     revisionText = soup.select('change')
