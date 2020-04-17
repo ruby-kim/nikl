@@ -20,7 +20,7 @@
     ├── proejectDesc
     ├── samplingDecl
     ├── editorialDecl
-├── profileDesc
+├── profileDesc / revisionDesc
     ├── creation
         ├── data
     ├── langUsage
