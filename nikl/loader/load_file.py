@@ -12,7 +12,7 @@ def read_text_file(name):
         Returns:
             :param: text(str): text in .txt file
     """
-    path = "./data/" + name
+    path = "./data/" + name + '.txt'
     with open(path, "r", encoding="utf-16") as file:
         text = file.readlines()
     return str(text)
