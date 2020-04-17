@@ -2,15 +2,23 @@
 Implement pre-processing and save files: <teiHeader></teiHeader> part
 """
 from bs4 import BeautifulSoup
+import os
 
-from nikl.preprocessor import *
+def save_info(name, infos):
+    """ ===============
+        Save .text info
+        ===============
+        Args:
+            :param: name(str): filename(test.txt)
+            :param: infos(list): <teiHeader></heiHeader> contents
+    """
+    name = name.replace(".txt", "")
+    dir = os.getcwd() + "\\data"
 
-# def save_info(name, infos):
-#     """ Save .text info"""
-#     file = open("../data/info/" + name + "_info.txt", 'a', encoding="utf-8")
-#     #for info in range(len(infos)):
-#
-#     #file.write(line) for line in range(len(text))
+    file = open(dir + "\\" + name + "_info.txt", 'w', encoding="utf-8")
+    for info in infos:
+        file.write(info+"\n")
+    file.close()
 
 
 def make_fileDesc(text):
@@ -51,7 +59,7 @@ def make_fileDesc(text):
         else:
             resp = soup.select("resp")[0].text
             tname = soup.select("tname")[0].text
-            _ = "    " + _ + "\n\tresp: " + resp + "\n\ttname: " + tname
+            _ = "    " + _ + "\n        resp: " + resp + "\n        tname: " + tname
         result[idx] = _
         idx += 1
 
@@ -83,7 +91,7 @@ def make_encodingDesc(text):
         idx += 1
 
     # insert section: [encodingDesc]
-    result.insert(0, "\n[encodingDesc]")
+    result.insert(0, "\n\n[encodingDesc]")
 
     return result
 
@@ -112,40 +120,78 @@ def make_profileDesc(text):
                 result.append(tag)
         else:
             result.append(key)
-    print(result)
+
     # find result's values
     idx = 0
     for _ in result:
-        tag = soup.select(_)[0].text
+        tag = soup.select(_)[0]
         if _ is "date":
-            _ = "creation:\n    " + _
+            _ = "creation:\n    " + _ + ": " + tag.text
         elif _ is "language":
-            _ = "language:\n    " + _
+            _ = "language:\n    " + _ + ": " + tag.text
         elif _ is "person":
-
+            personId = tag['id']
+            personSex = tag['sex']
+            personAge = tag['age']
+            _ += ": " + "\n    id: " + personId + "\n    sex: " + personSex + "\n    " + "age: " + personAge
         elif _ is "settingDesc":
-            _ += ": " + tag
+            _ += ": " + tag.text
         elif _ is "catRef":
-            _ += ": "
-    #     if _ is not "respStmt":
-    #         tag = soup.select(_)[0].text
-    #         _ += ": " + tag
-    #     else:
-    #         resp = soup.select("resp")[0].text
-    #         tname = soup.select("tname")[0].text
-    #         _ = "    " + _ + "\n\tresp: " + resp + "\n\ttname: " + tname
-    #     result[idx] = _
-    #     idx += 1
+            _ += ": " + tag.text
+        result[idx] = _
+        idx += 1
 
     # insert section: [profileDesc]
-    result.insert(0, "\n[profileDesc]")
-    #return result
-#
-#
-# def make_revisionDesc(key, value):
+    result.insert(0, "\n\n[profileDesc]")
+
+    return result
 
 
-def get_info(text, infos):
+def make_revisionDesc(text, i):
+    """ ============================
+        Parsing profileDesc information
+        ============================
+        Args:
+            :param: text(str): raw_file
+    """
+    soup = BeautifulSoup(text, "html.parser")
+    element = {
+        "date": None,
+        "respStmt": ["resp", "tname"],
+        "item": None
+    }
+
+    # setting list options: element's values
+    result = list()
+    for key, value in element.items():
+        if value is not None:
+            for tag in value:
+                result.append(tag)
+        else:
+            result.append(key)
+
+    # find result's values
+    idx = 0
+    for _ in result:
+        tag = soup.select(_)[0]
+        if _ is "date":
+            _ = "change:\n    " + _ + ": " + tag.text
+        elif _ is "resp":
+            _ = "respStmt \n    " + _ + ": " + soup.select("resp")[0].text
+        elif _ is "tname":
+            _ = "    " + _ + ": " + soup.select("tname")[0].text
+        elif _ is "item":
+            _ += ": " + tag.text
+        result[idx] = _
+        idx += 1
+
+    # insert section: [revisionDesc]
+    result.insert(0, "\n\n[revisionDesc " + str(i) + ']')
+
+    return result
+
+
+def get_info(filename, text, infos):
     """ =======================
         Parsing the information
         =======================
@@ -157,12 +203,18 @@ def get_info(text, infos):
         return
 
     # get specific values & write
+    soup = BeautifulSoup(text, 'html.parser')
+    revisionText = soup.select('change')
+
     fileDesc = make_fileDesc(text)
     encodingDesc = make_encodingDesc(text)
-    #profileDesc = make_profileDesc(text)
-    make_profileDesc(text)
-    #revisionDesc = make_revisionDesc(text)
-    #print(fileDesc)
-    #print(encodingDesc)
-    #print(profileDesc)
-    #print(revisionDesc)
+    profileDesc = make_profileDesc(text)
+    revList = list()
+    for i in range(1, len(revisionText)):
+        tmp = make_revisionDesc(str(revisionText[i]), i)
+        revList += tmp
+    result = fileDesc + encodingDesc + profileDesc + revList
+
+
+    # save data as .txt file
+    save_info(filename, result)

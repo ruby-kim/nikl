@@ -17,5 +17,5 @@ if __name__ == '__main__':
         print(_)
         raw_text = read_text_file(_)
         #print(len(raw_text))
-        get_info(raw_text, info)
+        get_info(_, raw_text, info)
         #print(raw_text)
