@@ -8,14 +8,37 @@ Implement pre-processing
 from nikl.option import setting_parse
 from nikl.loader.load_file import read_text_file
 from nikl.target.infos import get_info
+from nikl.target.contents import get_content
+
+
+def chk_newline(filename, content, newline):
+    """ Check newline value"""
+    if newline is True:
+        get_content(filename, content, True)
+    else:
+        get_content(filename, content, False)
+
 
 if __name__ == '__main__':
     """ Setting parameters input & description """
     filenames, info, content, newline = setting_parse()
 
-    for _ in filenames:
-        print(_)
-        raw_text = read_text_file(_)
-        #print(len(raw_text))
-        get_info(_, raw_text, info)
-        #print(raw_text)
+    for filename in filenames:
+        print("=======================================\n"
+              "    *   Target Data: ", filename, "\n"\
+              "=======================================\n"\
+              "         - info: ", info, "\n"\
+              "         - content: ", content, "\n"\
+              "         - newline: ", newline, "\n"\
+              "=======================================")
+
+        filename = filename.replace(".txt", "")
+        raw_text = read_text_file(filename)
+        if info is True:
+            print("[Start] Pre-process: info data...")
+            get_info(filename, raw_text)
+            print("[Save] info data. Check data/%s_info.txt\n" % filename)
+        if content is True:
+            print("[Start] Pre-process: content data...")
+            chk_newline(filename, raw_text, newline)
+            print("[Save] content data. Check data/%s_content.txt\n\n" % filename)
