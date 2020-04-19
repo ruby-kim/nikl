@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 
-__name__ = 'NIKL'
+__name__ = 'nikl'
 __description__ = 'Preprocess NIKL(National Institute of Korean Language) Corpus files'
-__version__ = '0.0.0'
+__version__ = '1.0.0'
 __url__ = 'https://github.com/study-artificial-intelligence/nikl'
 __download_url__ = 'https://github.com/study-artificial-intelligence/nikl'
 __install_requires__ = [
