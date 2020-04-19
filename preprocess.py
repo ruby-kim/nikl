@@ -12,7 +12,10 @@ from nikl.target.contents import get_content
 
 
 def chk_newline(filename, content, newline):
-    """ Check newline value"""
+    """ Check newline value
+        본문 내용을 저장할 시
+        각 문단별 끝에 개행문자가 들어가는지에 대한 여부 확인
+    """
     if newline is True:
         get_content(filename, content, True)
     else:
