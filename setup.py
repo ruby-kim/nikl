@@ -15,7 +15,7 @@ setup(name=nikl.__name__,
       long_description_content_type="text/markdown",
       packages=find_packages(),
       classifiers=[
-            "Development Status :: 3 - Alpha",
+            "Development Status :: 5 - Production/Stable",
             "Programming Language :: Python :: 3",
             "License :: OSI Approved :: MIT License",
             "Natural Language :: Korean",
