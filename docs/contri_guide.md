@@ -1,26 +1,8 @@
 # Contributor Guide
 ## Version
 ```x.y.z``` 기준으로
-* x: pypi에 올라가는, 대규모 업데이트 시. 초기값 0
-* y: 특정 파일 및 폴더 수정 시 해당 번호 입력
-  * 0: ./main.py
-  * 1: nikl/__init__.py
-  * 2: nikl/option.py
-  * 3: nikl/loader/__init__.py<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;load_file.py
-  * 4: nikl/preprocessor/__init__.py<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;preprocess.py
-  * 5: nikl/target/__init__.py<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contents.py<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;infos.py
-* z: 오류 수정 횟수. 초기값 0
+* x: 대규모 업데이트(주제별 전처리 함수 추가). 초기값 0
+* y: 파일수정->Toolkit으로 사용할 수 있도록 완성 시. 초기값 0
+  * 함수 하나하나를 따로 사용할 수 있도록 제작(열린 기능)
+* z: 파일 수정->Tool기능은 없고 그저 함수만 수정했을 시. 초기값 0
+  * ```./preprocess.py```로만 함수를 사용할 수 있음(제한된 기능)
