@@ -4,20 +4,22 @@ Implement pre-processing and save files: <teiHeader></teiHeader> part
 from bs4 import BeautifulSoup
 import os
 
+from nikl.loader.loadfile import read_text_file
 
-def save_info(name, infos):
+
+def save_info(filename, infos):
     """ ===============
         Save .text info
         ===============
         Args:
-            :param: name(str): filename(test.txt)
+            :param: filename(str): filename(test.txt)
             :param: infos(list): <teiHeader></heiHeader> contents
     """
-    dir = os.getcwd() + "\\data"
 
-    file = open(dir + "\\" + name + "_info.txt", 'w', encoding="utf-8")
+    filename = (os.getcwd() + filename).replace(".txt", "")
+    file = open(filename + "_info.txt", "w", encoding="utf-8")
     for info in infos:
-        file.write(info+"\n")
+        file.write(info + "\n")
     file.close()
 
 
@@ -26,7 +28,7 @@ def make_fileDesc(text):
         Parsing fileDesc information
         ============================
         Args:
-            :param: text(str): raw_file
+            :param: text(str): raw_infos
     """
     soup = BeautifulSoup(text, "html.parser")
     element = {
@@ -59,7 +61,7 @@ def make_fileDesc(text):
         else:
             resp = soup.select("resp")[0].text
             tname = soup.select("tname")[0].text
-            _ = "    " + _ + "\n        resp: " + resp + "\n        tname: " + tname
+            _ = "    " + _ + ":\n        resp: " + resp + "\n        tname: " + tname
         result[idx] = _
         idx += 1
 
@@ -73,7 +75,7 @@ def make_encodingDesc(text):
         Parsing encodingDesc information
         ================================
         Args:
-            :param: text(str): raw_file
+            :param: text(str): raw_infos
     """
     soup = BeautifulSoup(text, "html.parser")
     result = [
@@ -101,7 +103,7 @@ def make_profileDesc(text):
         Parsing profileDesc information
         ============================
         Args:
-            :param: text(str): raw_file
+            :param: text(str): raw_infos
     """
     soup = BeautifulSoup(text, "html.parser")
     element = {
@@ -152,7 +154,7 @@ def make_revisionDesc(text, i):
         Parsing profileDesc information
         ============================
         Args:
-            :param: text(str): raw_file
+            :param: text(str): raw_infos
     """
     soup = BeautifulSoup(text, "html.parser")
     element = {
@@ -197,7 +199,7 @@ def get_info(filename, text):
         =======================
         Args:
             :param: filename(str): filename
-            :param: text(str): raw_file
+            :param: text(str): raw_infos
     """
     # get specific values & write
     soup = BeautifulSoup(text, 'html.parser')
@@ -213,6 +215,12 @@ def get_info(filename, text):
         revList += tmp
     result = fileDesc + encodingDesc + profileDesc + revList
 
-
     # save data as .txt file
     save_info(filename, result)
+
+
+if __name__ == "__main__":
+    filename = "./data/" + "8CM00002.txt"
+    raw_text = read_text_file(filename)
+    print(type(filename), type(raw_text))
+    get_info(filename, raw_text)

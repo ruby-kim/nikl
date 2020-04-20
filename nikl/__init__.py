@@ -14,7 +14,7 @@ __install_requires__ = [
 __license__ = 'MIT'
 
 
-from nikl.loader.load_file import *
+from nikl.loader.loadfile import *
 from nikl.preprocessor import *
 from nikl.target.infos import *
 from nikl.target.contents import *
