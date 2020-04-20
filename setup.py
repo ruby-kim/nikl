@@ -15,13 +15,13 @@ setup(name=nikl.__name__,
       long_description_content_type="text/markdown",
       packages=find_packages(),
       classifiers=[
-            'Programming Language :: Python :: 3',
-            'Programming Language :: Python :: 3.2',
-            'Programming Language :: Python :: 3.3',
-            'Programming Language :: Python :: 3.4',
-            'Programming Language :: Python :: 3.5',
-            'Programming Language :: Python :: 3.6',
-            'Programming Language :: Python :: 3.7',
-            'Programming Language :: Python :: 3.8',
-      ]
+            "Development Status :: 4 - Beta,"
+            "Programming Language :: Python :: 3",
+            "License ::  MIT License",
+            "National Language :: Korean",
+            "Operating System :: Microsoft :: Windows",
+            "Operating System :: MacOS :: MacOS X",
+            "Operating System :: POSIX",
+      ],
+      python_requires='>=3.6',
       )
