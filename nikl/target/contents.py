@@ -19,8 +19,8 @@ def save_info(name, contents, newline):
 
     file = open(dir + "\\" + name + "_content.txt", 'w', encoding="utf-8")
     enterVal = "\n" if newline is True else ""
-    for info in contents:
-        file.write(info + enterVal)
+    for content in contents:
+        file.write(content + enterVal)
     file.close()
 
 
