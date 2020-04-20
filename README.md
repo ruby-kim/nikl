@@ -3,11 +3,11 @@
 <br><br>
 
 ## Installation
-* Pypi: 배포 여부 확인 후 가능하다면 pypi에 올려서 패키지화 예정
+* Pypi
   ```bash
   pip install nikl
   ```
-* Terminal
+* Source Code
   ```bash
   git clone https://github.com/study-artificial-intelligence/nikl.git
   cd nikl
@@ -20,7 +20,7 @@
 <br>
 
 ## Getting Started
-1. 변환을 원하는 국립국어원 언어정보나눈센터의 말뭉치 사전을 ```./data```폴더에 넣어주세요.
+1. 변환을 원하는 국립국어원 언어정보나눔센터의 말뭉치 사전을 ```./data```폴더에 넣어주세요.
 2. 아래의 명령어에서 대괄호[, ]에 원하는 ```파일명.txt```을 넣어서 사용하세요.<br>
 코드가 정상적으로 작동 시, ```./data/```폴더에 ```파일이름_info.txt```, ```파일이름_content.txt```가 생성됩니다.
 ```bash
