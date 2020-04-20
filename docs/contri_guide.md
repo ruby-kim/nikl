@@ -1,4 +1,4 @@
-# Development Guide
+# Contributor Guide
 ## Version
 ```x.y.z``` 기준으로
 * x: pypi에 올라가는, 대규모 업데이트 시. 초기값 0
