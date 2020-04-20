@@ -1,4 +1,6 @@
 # NIKL
+[![Python](https://img.shields.io/pypi/pyversions/nikl.svg?style=plastic)](https://badge.fury.io/py/nikl)
+[![PyPI](https://badge.fury.io/py/nikl.svg)](https://badge.fury.io/py/nikl)  
 국립국어원(**N**ational **I**nstitute of **K**orean **L**anguage) 언어정보나눔터: 말뭉치 파일 전처리 코드
 <br><br>
 
