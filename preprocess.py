@@ -6,7 +6,7 @@ Implement pre-processing
 """
 
 from nikl.option import setting_parse
-from nikl.loader.load_file import read_text_file
+from nikl.loader.loadfile import read_text_file
 from nikl.target.infos import get_info
 from nikl.target.contents import get_content
 
@@ -28,14 +28,16 @@ if __name__ == '__main__':
 
     for filename in filenames:
         print("=======================================\n"
-              "    *   Target Data: ", filename, "\n"\
-              "=======================================\n"\
-              "         - info: ", info, "\n"\
-              "         - content: ", content, "\n"\
-              "         - newline: ", newline, "\n"\
+              "    *   Target Data: ", filename, "\n"
+              "=======================================\n"
+              "         - info: ", info, "\n"
+              "         - content: ", content, "\n"
+              "         - newline: ", newline, "\n"
               "=======================================")
 
-        filename = filename.replace(".txt", "")
+        # setting path to reach .txt files
+        path = "./data/"
+        filename = path + filename
         raw_text = read_text_file(filename)
         if info is True:
             print("[Start] Pre-process: info data...")
