@@ -26,7 +26,7 @@
 2. 아래의 명령어에서 대괄호[, ]로 묶여있는 것들 중 선택해서 사용하세요.<br>단, ```--filename```에는 반드시 한 개 이상의 파일명이 들어가야 합니다.
 3. 코드가 정상적으로 작동 시, ```./data/```폴더에 ```파일이름_info.txt```, ```파일이름_content.txt```가 생성됩니다.
 ```bash
-python main.py --filename [파일명.txt] [--info] [--content] [--newline]
+python preprocess.py --filename [파일명.txt] [--info] [--content] [--newline]
 
 # ex1) python preprocess.py --filename test.txt --content --newline
 #      test.txt에서 단락 내용만 개행문자를 포함해서 data/test_content.txt 파일 생성
